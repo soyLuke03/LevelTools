@@ -63,31 +63,31 @@ public final class LevelToolsUtil {
   }
 
   public static double getCombatModifier(EntityType entityType) {
-    final ConfigurationSection combat_xp_modifiers =
-        LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("combat_xp_modifiers");
+    final ConfigurationSection combat_xp_modifiers = LevelToolsPlugin.getInstance().getConfig()
+        .getConfigurationSection("combat_xp_modifiers");
 
     final Double custom = getCustomModifier(combat_xp_modifiers, entityType.name());
-    if (custom != null) return custom;
+    if (custom != null)
+      return custom;
 
-    final ConfigurationSection default_combat_xp_modifier =
-        LevelToolsPlugin.getInstance()
-            .getConfig()
-            .getConfigurationSection("default_combat_xp_modifier");
+    final ConfigurationSection default_combat_xp_modifier = LevelToolsPlugin.getInstance()
+        .getConfig()
+        .getConfigurationSection("default_combat_xp_modifier");
 
     return calculateFromRange(default_combat_xp_modifier);
   }
 
   public static double getBlockModifier(Material material) {
-    final ConfigurationSection block_xp_modifiers =
-        LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("block_xp_modifiers");
+    final ConfigurationSection block_xp_modifiers = LevelToolsPlugin.getInstance().getConfig()
+        .getConfigurationSection("block_xp_modifiers");
 
     final Double custom = getCustomModifier(block_xp_modifiers, material.name());
-    if (custom != null) return custom;
+    if (custom != null)
+      return custom;
 
-    final ConfigurationSection default_block_xp_modifier =
-        LevelToolsPlugin.getInstance()
-            .getConfig()
-            .getConfigurationSection("default_block_xp_modifier");
+    final ConfigurationSection default_block_xp_modifier = LevelToolsPlugin.getInstance()
+        .getConfig()
+        .getConfigurationSection("default_block_xp_modifier");
 
     return calculateFromRange(default_block_xp_modifier);
   }
@@ -134,6 +134,26 @@ public final class LevelToolsUtil {
     return material.name().endsWith("_SWORD");
   }
 
+  public static boolean isTrident(Material material) {
+    return material.name().endsWith("TRIDENT");
+  }
+
+  public static boolean isHoe(Material material) {
+    return material.name().endsWith("_HOE");
+  }
+
+  public static boolean isFishingRod(Material material) {
+    return material.name().endsWith("FISHING_ROD");
+  }
+
+  public static boolean isShield(Material material) {
+    return material.name().endsWith("SHIELD");
+  }
+
+  public static boolean isShears(Material material) {
+    return material.name().endsWith("SHEARS");
+  }
+
   public static boolean isProjectileShooter(Material material) {
     return material == XMaterial.BOW.parseMaterial()
         || (RedLib.MID_VERSION >= 14 && material == XMaterial.CROSSBOW.parseMaterial());
@@ -144,7 +164,12 @@ public final class LevelToolsUtil {
         || isAxe(material)
         || isShovel(material)
         || isSword(material)
-        || isProjectileShooter(material);
+        || isProjectileShooter(material)
+        || isShield(material)
+        || isFishingRod(material)
+        || isHoe(material)
+        || isShears(material)
+        || isTrident(material);
   }
 
   public static ItemStack getHand(Player player) {
@@ -162,8 +187,7 @@ public final class LevelToolsUtil {
   }
 
   public static String createDefaultProgressBar(double xp, double maxXp) {
-    ConfigurationSection cs =
-        LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("progress_bar");
+    ConfigurationSection cs = LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("progress_bar");
 
     return LevelToolsUtil.getProgressBar(
         (xp / maxXp),
@@ -178,7 +202,8 @@ public final class LevelToolsUtil {
   }
 
   public static double round(double value, int places) {
-    if (places < 0) throw new IllegalArgumentException();
+    if (places < 0)
+      throw new IllegalArgumentException();
 
     BigDecimal bd = BigDecimal.valueOf(value);
     bd = bd.setScale(places, RoundingMode.HALF_UP);
@@ -217,8 +242,7 @@ public final class LevelToolsUtil {
 
   public static ItemStack buildItemStack(
       ItemStack stack, Map<Enchantment, Integer> enchantments, int level, double xp, double maxXp) {
-    final ConfigurationSection cs =
-        LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("display");
+    final ConfigurationSection cs = LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("display");
 
     final ItemMeta meta = stack.getItemMeta();
     assert meta != null : "ItemMeta is null! Should not happen.";
@@ -236,19 +260,17 @@ public final class LevelToolsUtil {
                   .replace("{progress_bar}", progressBar)));
     }
     if (cs.getBoolean("lore.enabled")) {
-      List<String> lines =
-          cs.getStringList("lore.lines").stream()
-              .map(str -> LORE_PREFIX + str)
-              .map(
-                  str ->
-                      colorize(
-                              str.replace("{level}", String.valueOf(level))
-                                  .replace("{xp}", String.valueOf(xp))
-                                  .replace("{max_xp}", String.valueOf(maxXp))
-                                  .replace("{progress_bar}", progressBar))
-                          .replace("{max_xp_formatted}", formatMoney(maxXp))
-                          .replace("{xp_formatted}", formatMoney(xp)))
-              .collect(Collectors.toList());
+      List<String> lines = cs.getStringList("lore.lines").stream()
+          .map(str -> LORE_PREFIX + str)
+          .map(
+              str -> colorize(
+                  str.replace("{level}", String.valueOf(level))
+                      .replace("{xp}", String.valueOf(xp))
+                      .replace("{max_xp}", String.valueOf(maxXp))
+                      .replace("{progress_bar}", progressBar))
+                  .replace("{max_xp_formatted}", formatMoney(maxXp))
+                  .replace("{xp_formatted}", formatMoney(xp)))
+          .collect(Collectors.toList());
       smartSetLore(meta, lines);
     }
     for (Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {
@@ -308,9 +330,12 @@ public final class LevelToolsUtil {
       }
 
       final int keyNum = Integer.parseInt(key);
-      if (keyNum < 0) continue;
-      if (keyNum != tool.getLevel()) continue;
-      if (tool.getLastHandledReward() == keyNum) return;
+      if (keyNum < 0)
+        continue;
+      if (keyNum != tool.getLevel())
+        continue;
+      if (tool.getLastHandledReward() == keyNum)
+        return;
 
       tool.setLastHandledReward(keyNum);
       setHand(player, tool.getItemStack());
@@ -322,7 +347,7 @@ public final class LevelToolsUtil {
         }
 
         RewardType.fromConfigKey(
-                split[0].toLowerCase(Locale.ROOT).trim().replace(" ", "-").replace("_", "-"))
+            split[0].toLowerCase(Locale.ROOT).trim().replace(" ", "-").replace("_", "-"))
             .ifPresent(
                 type -> {
                   type.apply(tool, split, player);
@@ -336,12 +361,41 @@ public final class LevelToolsUtil {
     }
   }
 
+
+  /////////////////////////////////////////////////
+
   private static ConfigurationSection getCsFromType(Material material) {
     if (LevelToolsUtil.isSword(material)) {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("sword_rewards");
-    } else if (LevelToolsUtil.isProjectileShooter(material)) {
+    } 
+    else if (LevelToolsUtil.isProjectileShooter(material)) {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("bow_rewards");
-    } else {
+    } 
+    else if (LevelToolsUtil.isAxe(material)) {
+      return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("axe_rewards");
+    } 
+    else if (LevelToolsUtil.isHoe(material)) {
+      return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("hoe_rewards");
+    } 
+    else if (LevelToolsUtil.isPickaxe(material)) {
+      return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("pickaxe_rewards");
+    } 
+    else if (LevelToolsUtil.isShield(material)) {
+      return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("shield_rewards");
+    } 
+    else if (LevelToolsUtil.isShears(material)) {
+      return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("shears_rewards");
+    } 
+    else if (LevelToolsUtil.isShovel(material)) {
+      return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("shovel_rewards");
+    } 
+    else if (LevelToolsUtil.isTrident(material)) {
+      return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("trident_rewards");
+    } 
+    else if (LevelToolsUtil.isFishingRod(material)) {
+      return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("fishing_rod_rewards");
+    } 
+    else {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("tool_rewards");
     }
   }
