@@ -178,6 +178,12 @@ public final class LevelToolsUtil {
         : player.getItemInHand().clone();
   }
 
+  public static ItemStack getOffHand(Player player) {
+    return RedLib.MID_VERSION >= 9
+        ? player.getInventory().getItemInOffHand().clone()
+        : player.getItemInHand().clone();
+  }
+
   public static void setHand(Player player, ItemStack stack) {
     if (RedLib.MID_VERSION >= 9) {
       player.getInventory().setItemInMainHand(stack);
@@ -362,9 +368,7 @@ public final class LevelToolsUtil {
   }
 
 
-  /////////////////////////////////////////////////
-
-  private static ConfigurationSection getCsFromType(Material material) {
+    private static ConfigurationSection getCsFromType(Material material) {
     if (LevelToolsUtil.isSword(material)) {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("sword_rewards");
     } 

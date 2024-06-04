@@ -54,6 +54,8 @@ public class BlockEventListener extends XPListener {
 
     if (!LevelToolsUtil.isAxe(hand.getType())
         && !LevelToolsUtil.isPickaxe(hand.getType())
+        && !LevelToolsUtil.isHoe(hand.getType())
+        && !LevelToolsUtil.isShears(hand.getType())
         && !LevelToolsUtil.isShovel(hand.getType())) {
       return;
     }
