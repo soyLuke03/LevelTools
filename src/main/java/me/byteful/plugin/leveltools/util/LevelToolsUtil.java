@@ -30,6 +30,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -172,6 +173,29 @@ public final class LevelToolsUtil {
         || isTrident(material);
   }
 
+  public static boolean isHelmet(Material material) {
+    return material.name().endsWith("_HELMET");
+  }
+
+  public static boolean isChestplate(Material material) {
+    return material.name().endsWith("_CHESTPLATE");
+  }
+
+  public static boolean isLeggings(Material material) {
+    return material.name().endsWith("_LEGGINGS");
+  }
+
+  public static boolean isBoots(Material material) {
+    return material.name().endsWith("_BOOTS");
+  }
+
+  public static boolean isSupportedArmor(Material material) {
+    return isHelmet(material)
+        || isChestplate(material)
+        || isLeggings(material)
+        || isBoots(material);
+  }
+
   public static ItemStack getHand(Player player) {
     return RedLib.MID_VERSION >= 9
         ? player.getInventory().getItemInMainHand().clone()
@@ -184,12 +208,52 @@ public final class LevelToolsUtil {
         : player.getItemInHand().clone();
   }
 
+  public static ItemStack getHelmet(Player player) {
+    return RedLib.MID_VERSION >= 9
+        ? player.getInventory().getHelmet().clone()
+        : player.getItemInHand().clone();
+  }
+
+  public static ItemStack getChestplate(Player player) {
+    return RedLib.MID_VERSION >= 9
+        ? player.getInventory().getChestplate().clone()
+        : player.getItemInHand().clone();
+  }
+
+  public static ItemStack getLeggings(Player player) {
+    return RedLib.MID_VERSION >= 9
+        ? player.getInventory().getLeggings().clone()
+        : player.getItemInHand().clone();
+  }
+
+  public static ItemStack getBoots(Player player) {
+    return RedLib.MID_VERSION >= 9
+        ? player.getInventory().getBoots().clone()
+        : player.getItemInHand().clone();
+  }
+
   public static void setHand(Player player, ItemStack stack) {
     if (RedLib.MID_VERSION >= 9) {
       player.getInventory().setItemInMainHand(stack);
     } else {
       player.setItemInHand(stack);
     }
+  }
+
+  public static boolean getDamageFromValidCause(DamageCause damageCause) {
+    if (damageCause.equals(DamageCause.BLOCK_EXPLOSION)
+        || damageCause.equals(DamageCause.ENTITY_ATTACK)
+        || damageCause.equals(DamageCause.ENTITY_EXPLOSION)
+        || damageCause.equals(DamageCause.ENTITY_SWEEP_ATTACK)
+        || damageCause.equals(DamageCause.FALL)
+        || damageCause.equals(DamageCause.FALLING_BLOCK)
+        || damageCause.equals(DamageCause.LIGHTNING)
+        || damageCause.equals(DamageCause.PROJECTILE)
+        || damageCause.equals(DamageCause.THORNS)) {
+      return true;
+    }
+
+    return false;
   }
 
   public static String createDefaultProgressBar(double xp, double maxXp) {
@@ -367,39 +431,36 @@ public final class LevelToolsUtil {
     }
   }
 
-
-    private static ConfigurationSection getCsFromType(Material material) {
+  private static ConfigurationSection getCsFromType(Material material) {
     if (LevelToolsUtil.isSword(material)) {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("sword_rewards");
-    } 
-    else if (LevelToolsUtil.isProjectileShooter(material)) {
+    } else if (LevelToolsUtil.isProjectileShooter(material)) {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("bow_rewards");
-    } 
-    else if (LevelToolsUtil.isAxe(material)) {
+    } else if (LevelToolsUtil.isAxe(material)) {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("axe_rewards");
-    } 
-    else if (LevelToolsUtil.isHoe(material)) {
+    } else if (LevelToolsUtil.isHoe(material)) {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("hoe_rewards");
-    } 
-    else if (LevelToolsUtil.isPickaxe(material)) {
+    } else if (LevelToolsUtil.isPickaxe(material)) {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("pickaxe_rewards");
-    } 
-    else if (LevelToolsUtil.isShield(material)) {
+    } else if (LevelToolsUtil.isShield(material)) {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("shield_rewards");
-    } 
-    else if (LevelToolsUtil.isShears(material)) {
+    } else if (LevelToolsUtil.isShears(material)) {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("shears_rewards");
-    } 
-    else if (LevelToolsUtil.isShovel(material)) {
+    } else if (LevelToolsUtil.isShovel(material)) {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("shovel_rewards");
-    } 
-    else if (LevelToolsUtil.isTrident(material)) {
+    } else if (LevelToolsUtil.isTrident(material)) {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("trident_rewards");
-    } 
-    else if (LevelToolsUtil.isFishingRod(material)) {
+    } else if (LevelToolsUtil.isFishingRod(material)) {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("fishing_rod_rewards");
-    } 
-    else {
+    } else if (LevelToolsUtil.isHelmet(material)) {
+      return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("helmet_rewards");
+    } else if (LevelToolsUtil.isChestplate(material)) {
+      return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("chestplate_rewards");
+    } else if (LevelToolsUtil.isLeggings(material)) {
+      return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("leggings_rewards");
+    } else if (LevelToolsUtil.isBoots(material)) {
+      return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("boots_rewards");
+    } else {
       return LevelToolsPlugin.getInstance().getConfig().getConfigurationSection("tool_rewards");
     }
   }

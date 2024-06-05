@@ -246,6 +246,595 @@ bow_rewards:
     - "enchant2 power 10"
     - "enchant2 infinity 1"
 
+# Configuration for tool rewards given at level ups.
+# Handlers:
+# - "command" : Runs the command provided as the console. (Ex: "command say test")
+# - "player-command" : Runs the command provided as the player. ("Ex: player-command say test")
+# - "player-opcommand" : Runs the command provided as the player with OP permissions. ("Ex: player-opcommand specialenchant enchantment")
+# - "enchant" : Adds an enchantment to the tool. Overrides existing enchantments with the new level provided. (Ex: "enchant efficiency 1")
+# - "enchant2" : Does the same thing as "enchant" but doesn't override existing enchantments. (Ex: "enchant2 efficiency 1")
+# - "enchant3" : Increases the existing level value of the enchant. (Ex: "enchant3 efficiency 1")
+# - "attribute" : Modifies an attribute on the tool. (Ex: "attribute generic.attack_speed 10") OR (Ex: "attribute GENERIC_ATTACK_SPEED 10")
+axe_rewards:
+  1:
+    - "enchant2 efficiency 1"
+  3:
+    - "enchant2 efficiency 2"
+  5:
+    - "enchant2 efficiency 3"
+  8:
+    - "enchant2 efficiency 4"
+  10:
+    - "enchant2 efficiency 5"
+  11:
+    - "enchant2 unbreaking 1"
+  13:
+    - "enchant2 unbreaking 2"
+  15:
+    - "enchant2 unbreaking 3"
+  20:
+    - "enchant2 mending 1"
+  24:
+    - "enchant2 fortune 1"
+  26:
+    - "enchant2 fortune 2"
+  30:
+    - "enchant2 fortune 3"
+  40:
+    - "enchant2 efficiency 6"
+  50:
+    - "enchant2 fortune 4"
+  65:
+    - "enchant2 efficiency 7"
+    - "enchant2 unbreaking 10"
+  80:
+    - "enchant2 efficiency 8"
+  90:
+    - "enchant2 efficiency 9"
+  100:
+    - "enchant2 efficiency 10"
+    - "enchant2 fortune 5"
+
+# Configuration for tool rewards given at level ups.
+# Handlers:
+# - "command" : Runs the command provided as the console. (Ex: "command say test")
+# - "player-command" : Runs the command provided as the player. ("Ex: player-command say test")
+# - "player-opcommand" : Runs the command provided as the player with OP permissions. ("Ex: player-opcommand specialenchant enchantment")
+# - "enchant" : Adds an enchantment to the tool. Overrides existing enchantments with the new level provided. (Ex: "enchant efficiency 1")
+# - "enchant2" : Does the same thing as "enchant" but doesn't override existing enchantments. (Ex: "enchant2 efficiency 1")
+# - "enchant3" : Increases the existing level value of the enchant. (Ex: "enchant3 efficiency 1")
+# - "attribute" : Modifies an attribute on the tool. (Ex: "attribute generic.attack_speed 10") OR (Ex: "attribute GENERIC_ATTACK_SPEED 10")
+hoe_rewards:
+  1:
+    - "enchant2 efficiency 1"
+  3:
+    - "enchant2 efficiency 2"
+  5:
+    - "enchant2 efficiency 3"
+  8:
+    - "enchant2 efficiency 4"
+  10:
+    - "enchant2 efficiency 5"
+  11:
+    - "enchant2 unbreaking 1"
+  13:
+    - "enchant2 unbreaking 2"
+  15:
+    - "enchant2 unbreaking 3"
+  20:
+    - "enchant2 mending 1"
+  24:
+    - "enchant2 fortune 1"
+  26:
+    - "enchant2 fortune 2"
+  30:
+    - "enchant2 fortune 3"
+  40:
+    - "enchant2 efficiency 6"
+  50:
+    - "enchant2 fortune 4"
+  65:
+    - "enchant2 efficiency 7"
+    - "enchant2 unbreaking 10"
+  80:
+    - "enchant2 efficiency 8"
+  90:
+    - "enchant2 efficiency 9"
+  100:
+    - "enchant2 efficiency 10"
+    - "enchant2 fortune 5"
+
+# Configuration for tool rewards given at level ups.
+# Handlers:
+# - "command" : Runs the command provided as the console. (Ex: "command say test")
+# - "player-command" : Runs the command provided as the player. ("Ex: player-command say test")
+# - "player-opcommand" : Runs the command provided as the player with OP permissions. ("Ex: player-opcommand specialenchant enchantment")
+# - "enchant" : Adds an enchantment to the tool. Overrides existing enchantments with the new level provided. (Ex: "enchant efficiency 1")
+# - "enchant2" : Does the same thing as "enchant" but doesn't override existing enchantments. (Ex: "enchant2 efficiency 1")
+# - "enchant3" : Increases the existing level value of the enchant. (Ex: "enchant3 efficiency 1")
+# - "attribute" : Modifies an attribute on the tool. (Ex: "attribute generic.attack_speed 10") OR (Ex: "attribute GENERIC_ATTACK_SPEED 10")
+pickaxe_rewards:
+  1:
+    - "enchant2 efficiency 1"
+  3:
+    - "enchant2 efficiency 2"
+  5:
+    - "enchant2 efficiency 3"
+  8:
+    - "enchant2 efficiency 4"
+  10:
+    - "enchant2 efficiency 5"
+  11:
+    - "enchant2 unbreaking 1"
+  13:
+    - "enchant2 unbreaking 2"
+  15:
+    - "enchant2 unbreaking 3"
+  20:
+    - "enchant2 mending 1"
+  24:
+    - "enchant2 fortune 1"
+  26:
+    - "enchant2 fortune 2"
+  30:
+    - "enchant2 fortune 3"
+  40:
+    - "enchant2 efficiency 6"
+  50:
+    - "enchant2 fortune 4"
+  65:
+    - "enchant2 efficiency 7"
+    - "enchant2 unbreaking 10"
+  80:
+    - "enchant2 efficiency 8"
+  90:
+    - "enchant2 efficiency 9"
+  100:
+    - "enchant2 efficiency 10"
+    - "enchant2 fortune 5"
+
+# Configuration for tool rewards given at level ups.
+# Handlers:
+# - "command" : Runs the command provided as the console. (Ex: "command say test")
+# - "player-command" : Runs the command provided as the player. ("Ex: player-command say test")
+# - "player-opcommand" : Runs the command provided as the player with OP permissions. ("Ex: player-opcommand specialenchant enchantment")
+# - "enchant" : Adds an enchantment to the tool. Overrides existing enchantments with the new level provided. (Ex: "enchant efficiency 1")
+# - "enchant2" : Does the same thing as "enchant" but doesn't override existing enchantments. (Ex: "enchant2 efficiency 1")
+# - "enchant3" : Increases the existing level value of the enchant. (Ex: "enchant3 efficiency 1")
+# - "attribute" : Modifies an attribute on the tool. (Ex: "attribute generic.attack_speed 10") OR (Ex: "attribute GENERIC_ATTACK_SPEED 10")
+shield_rewards:
+  1:
+    - "enchant2 efficiency 1"
+  3:
+    - "enchant2 efficiency 2"
+  5:
+    - "enchant2 efficiency 3"
+  8:
+    - "enchant2 efficiency 4"
+  10:
+    - "enchant2 efficiency 5"
+  11:
+    - "enchant2 unbreaking 1"
+  13:
+    - "enchant2 unbreaking 2"
+  15:
+    - "enchant2 unbreaking 3"
+  20:
+    - "enchant2 mending 1"
+  24:
+    - "enchant2 fortune 1"
+  26:
+    - "enchant2 fortune 2"
+  30:
+    - "enchant2 fortune 3"
+  40:
+    - "enchant2 efficiency 6"
+  50:
+    - "enchant2 fortune 4"
+  65:
+    - "enchant2 efficiency 7"
+    - "enchant2 unbreaking 10"
+  80:
+    - "enchant2 efficiency 8"
+  90:
+    - "enchant2 efficiency 9"
+  100:
+    - "enchant2 efficiency 10"
+    - "enchant2 fortune 5"
+
+# Configuration for tool rewards given at level ups.
+# Handlers:
+# - "command" : Runs the command provided as the console. (Ex: "command say test")
+# - "player-command" : Runs the command provided as the player. ("Ex: player-command say test")
+# - "player-opcommand" : Runs the command provided as the player with OP permissions. ("Ex: player-opcommand specialenchant enchantment")
+# - "enchant" : Adds an enchantment to the tool. Overrides existing enchantments with the new level provided. (Ex: "enchant efficiency 1")
+# - "enchant2" : Does the same thing as "enchant" but doesn't override existing enchantments. (Ex: "enchant2 efficiency 1")
+# - "enchant3" : Increases the existing level value of the enchant. (Ex: "enchant3 efficiency 1")
+# - "attribute" : Modifies an attribute on the tool. (Ex: "attribute generic.attack_speed 10") OR (Ex: "attribute GENERIC_ATTACK_SPEED 10")
+shears_rewards:
+  1:
+    - "enchant2 efficiency 1"
+  3:
+    - "enchant2 efficiency 2"
+  5:
+    - "enchant2 efficiency 3"
+  8:
+    - "enchant2 efficiency 4"
+  10:
+    - "enchant2 efficiency 5"
+  11:
+    - "enchant2 unbreaking 1"
+  13:
+    - "enchant2 unbreaking 2"
+  15:
+    - "enchant2 unbreaking 3"
+  20:
+    - "enchant2 mending 1"
+  24:
+    - "enchant2 fortune 1"
+  26:
+    - "enchant2 fortune 2"
+  30:
+    - "enchant2 fortune 3"
+  40:
+    - "enchant2 efficiency 6"
+  50:
+    - "enchant2 fortune 4"
+  65:
+    - "enchant2 efficiency 7"
+    - "enchant2 unbreaking 10"
+  80:
+    - "enchant2 efficiency 8"
+  90:
+    - "enchant2 efficiency 9"
+  100:
+    - "enchant2 efficiency 10"
+    - "enchant2 fortune 5"
+
+# Configuration for tool rewards given at level ups.
+# Handlers:
+# - "command" : Runs the command provided as the console. (Ex: "command say test")
+# - "player-command" : Runs the command provided as the player. ("Ex: player-command say test")
+# - "player-opcommand" : Runs the command provided as the player with OP permissions. ("Ex: player-opcommand specialenchant enchantment")
+# - "enchant" : Adds an enchantment to the tool. Overrides existing enchantments with the new level provided. (Ex: "enchant efficiency 1")
+# - "enchant2" : Does the same thing as "enchant" but doesn't override existing enchantments. (Ex: "enchant2 efficiency 1")
+# - "enchant3" : Increases the existing level value of the enchant. (Ex: "enchant3 efficiency 1")
+# - "attribute" : Modifies an attribute on the tool. (Ex: "attribute generic.attack_speed 10") OR (Ex: "attribute GENERIC_ATTACK_SPEED 10")
+shovel_rewards:
+  1:
+    - "enchant2 efficiency 1"
+  3:
+    - "enchant2 efficiency 2"
+  5:
+    - "enchant2 efficiency 3"
+  8:
+    - "enchant2 efficiency 4"
+  10:
+    - "enchant2 efficiency 5"
+  11:
+    - "enchant2 unbreaking 1"
+  13:
+    - "enchant2 unbreaking 2"
+  15:
+    - "enchant2 unbreaking 3"
+  20:
+    - "enchant2 mending 1"
+  24:
+    - "enchant2 fortune 1"
+  26:
+    - "enchant2 fortune 2"
+  30:
+    - "enchant2 fortune 3"
+  40:
+    - "enchant2 efficiency 6"
+  50:
+    - "enchant2 fortune 4"
+  65:
+    - "enchant2 efficiency 7"
+    - "enchant2 unbreaking 10"
+  80:
+    - "enchant2 efficiency 8"
+  90:
+    - "enchant2 efficiency 9"
+  100:
+    - "enchant2 efficiency 10"
+    - "enchant2 fortune 5"
+
+# Configuration for tool rewards given at level ups.
+# Handlers:
+# - "command" : Runs the command provided as the console. (Ex: "command say test")
+# - "player-command" : Runs the command provided as the player. ("Ex: player-command say test")
+# - "player-opcommand" : Runs the command provided as the player with OP permissions. ("Ex: player-opcommand specialenchant enchantment")
+# - "enchant" : Adds an enchantment to the tool. Overrides existing enchantments with the new level provided. (Ex: "enchant efficiency 1")
+# - "enchant2" : Does the same thing as "enchant" but doesn't override existing enchantments. (Ex: "enchant2 efficiency 1")
+# - "enchant3" : Increases the existing level value of the enchant. (Ex: "enchant3 efficiency 1")
+# - "attribute" : Modifies an attribute on the tool. (Ex: "attribute generic.attack_speed 10") OR (Ex: "attribute GENERIC_ATTACK_SPEED 10")
+trident_rewards:
+  1:
+    - "enchant2 efficiency 1"
+  3:
+    - "enchant2 efficiency 2"
+  5:
+    - "enchant2 efficiency 3"
+  8:
+    - "enchant2 efficiency 4"
+  10:
+    - "enchant2 efficiency 5"
+  11:
+    - "enchant2 unbreaking 1"
+  13:
+    - "enchant2 unbreaking 2"
+  15:
+    - "enchant2 unbreaking 3"
+  20:
+    - "enchant2 mending 1"
+  24:
+    - "enchant2 fortune 1"
+  26:
+    - "enchant2 fortune 2"
+  30:
+    - "enchant2 fortune 3"
+  40:
+    - "enchant2 efficiency 6"
+  50:
+    - "enchant2 fortune 4"
+  65:
+    - "enchant2 efficiency 7"
+    - "enchant2 unbreaking 10"
+  80:
+    - "enchant2 efficiency 8"
+  90:
+    - "enchant2 efficiency 9"
+  100:
+    - "enchant2 efficiency 10"
+    - "enchant2 fortune 5"
+
+# Configuration for tool rewards given at level ups.
+# Handlers:
+# - "command" : Runs the command provided as the console. (Ex: "command say test")
+# - "player-command" : Runs the command provided as the player. ("Ex: player-command say test")
+# - "player-opcommand" : Runs the command provided as the player with OP permissions. ("Ex: player-opcommand specialenchant enchantment")
+# - "enchant" : Adds an enchantment to the tool. Overrides existing enchantments with the new level provided. (Ex: "enchant efficiency 1")
+# - "enchant2" : Does the same thing as "enchant" but doesn't override existing enchantments. (Ex: "enchant2 efficiency 1")
+# - "enchant3" : Increases the existing level value of the enchant. (Ex: "enchant3 efficiency 1")
+# - "attribute" : Modifies an attribute on the tool. (Ex: "attribute generic.attack_speed 10") OR (Ex: "attribute GENERIC_ATTACK_SPEED 10")
+fishing_rod_rewards:
+  1:
+    - "enchant2 efficiency 1"
+  3:
+    - "enchant2 efficiency 2"
+  5:
+    - "enchant2 efficiency 3"
+  8:
+    - "enchant2 efficiency 4"
+  10:
+    - "enchant2 efficiency 5"
+  11:
+    - "enchant2 unbreaking 1"
+  13:
+    - "enchant2 unbreaking 2"
+  15:
+    - "enchant2 unbreaking 3"
+  20:
+    - "enchant2 mending 1"
+  24:
+    - "enchant2 fortune 1"
+  26:
+    - "enchant2 fortune 2"
+  30:
+    - "enchant2 fortune 3"
+  40:
+    - "enchant2 efficiency 6"
+  50:
+    - "enchant2 fortune 4"
+  65:
+    - "enchant2 efficiency 7"
+    - "enchant2 unbreaking 10"
+  80:
+    - "enchant2 efficiency 8"
+  90:
+    - "enchant2 efficiency 9"
+  100:
+    - "enchant2 efficiency 10"
+    - "enchant2 fortune 5"
+
+# Configuration for tool rewards given at level ups.
+# Handlers:
+# - "command" : Runs the command provided as the console. (Ex: "command say test")
+# - "player-command" : Runs the command provided as the player. ("Ex: player-command say test")
+# - "player-opcommand" : Runs the command provided as the player with OP permissions. ("Ex: player-opcommand specialenchant enchantment")
+# - "enchant" : Adds an enchantment to the tool. Overrides existing enchantments with the new level provided. (Ex: "enchant efficiency 1")
+# - "enchant2" : Does the same thing as "enchant" but doesn't override existing enchantments. (Ex: "enchant2 efficiency 1")
+# - "enchant3" : Increases the existing level value of the enchant. (Ex: "enchant3 efficiency 1")
+# - "attribute" : Modifies an attribute on the tool. (Ex: "attribute generic.attack_speed 10") OR (Ex: "attribute GENERIC_ATTACK_SPEED 10")
+helmet_rewards:
+  1:
+    - "enchant2 efficiency 1"
+  3:
+    - "enchant2 efficiency 2"
+  5:
+    - "enchant2 efficiency 3"
+  8:
+    - "enchant2 efficiency 4"
+  10:
+    - "enchant2 efficiency 5"
+  11:
+    - "enchant2 unbreaking 1"
+  13:
+    - "enchant2 unbreaking 2"
+  15:
+    - "enchant2 unbreaking 3"
+  20:
+    - "enchant2 mending 1"
+  24:
+    - "enchant2 fortune 1"
+  26:
+    - "enchant2 fortune 2"
+  30:
+    - "enchant2 fortune 3"
+  40:
+    - "enchant2 efficiency 6"
+  50:
+    - "enchant2 fortune 4"
+  65:
+    - "enchant2 efficiency 7"
+    - "enchant2 unbreaking 10"
+  80:
+    - "enchant2 efficiency 8"
+  90:
+    - "enchant2 efficiency 9"
+  100:
+    - "enchant2 efficiency 10"
+    - "enchant2 fortune 5"
+
+# Configuration for tool rewards given at level ups.
+# Handlers:
+# - "command" : Runs the command provided as the console. (Ex: "command say test")
+# - "player-command" : Runs the command provided as the player. ("Ex: player-command say test")
+# - "player-opcommand" : Runs the command provided as the player with OP permissions. ("Ex: player-opcommand specialenchant enchantment")
+# - "enchant" : Adds an enchantment to the tool. Overrides existing enchantments with the new level provided. (Ex: "enchant efficiency 1")
+# - "enchant2" : Does the same thing as "enchant" but doesn't override existing enchantments. (Ex: "enchant2 efficiency 1")
+# - "enchant3" : Increases the existing level value of the enchant. (Ex: "enchant3 efficiency 1")
+# - "attribute" : Modifies an attribute on the tool. (Ex: "attribute generic.attack_speed 10") OR (Ex: "attribute GENERIC_ATTACK_SPEED 10")
+chestplate_rewards:
+  1:
+    - "enchant2 efficiency 1"
+  3:
+    - "enchant2 efficiency 2"
+  5:
+    - "enchant2 efficiency 3"
+  8:
+    - "enchant2 efficiency 4"
+  10:
+    - "enchant2 efficiency 5"
+  11:
+    - "enchant2 unbreaking 1"
+  13:
+    - "enchant2 unbreaking 2"
+  15:
+    - "enchant2 unbreaking 3"
+  20:
+    - "enchant2 mending 1"
+  24:
+    - "enchant2 fortune 1"
+  26:
+    - "enchant2 fortune 2"
+  30:
+    - "enchant2 fortune 3"
+  40:
+    - "enchant2 efficiency 6"
+  50:
+    - "enchant2 fortune 4"
+  65:
+    - "enchant2 efficiency 7"
+    - "enchant2 unbreaking 10"
+  80:
+    - "enchant2 efficiency 8"
+  90:
+    - "enchant2 efficiency 9"
+  100:
+    - "enchant2 efficiency 10"
+    - "enchant2 fortune 5"
+
+# Configuration for tool rewards given at level ups.
+# Handlers:
+# - "command" : Runs the command provided as the console. (Ex: "command say test")
+# - "player-command" : Runs the command provided as the player. ("Ex: player-command say test")
+# - "player-opcommand" : Runs the command provided as the player with OP permissions. ("Ex: player-opcommand specialenchant enchantment")
+# - "enchant" : Adds an enchantment to the tool. Overrides existing enchantments with the new level provided. (Ex: "enchant efficiency 1")
+# - "enchant2" : Does the same thing as "enchant" but doesn't override existing enchantments. (Ex: "enchant2 efficiency 1")
+# - "enchant3" : Increases the existing level value of the enchant. (Ex: "enchant3 efficiency 1")
+# - "attribute" : Modifies an attribute on the tool. (Ex: "attribute generic.attack_speed 10") OR (Ex: "attribute GENERIC_ATTACK_SPEED 10")
+leggings_rewards:
+  1:
+    - "enchant2 efficiency 1"
+  3:
+    - "enchant2 efficiency 2"
+  5:
+    - "enchant2 efficiency 3"
+  8:
+    - "enchant2 efficiency 4"
+  10:
+    - "enchant2 efficiency 5"
+  11:
+    - "enchant2 unbreaking 1"
+  13:
+    - "enchant2 unbreaking 2"
+  15:
+    - "enchant2 unbreaking 3"
+  20:
+    - "enchant2 mending 1"
+  24:
+    - "enchant2 fortune 1"
+  26:
+    - "enchant2 fortune 2"
+  30:
+    - "enchant2 fortune 3"
+  40:
+    - "enchant2 efficiency 6"
+  50:
+    - "enchant2 fortune 4"
+  65:
+    - "enchant2 efficiency 7"
+    - "enchant2 unbreaking 10"
+  80:
+    - "enchant2 efficiency 8"
+  90:
+    - "enchant2 efficiency 9"
+  100:
+    - "enchant2 efficiency 10"
+    - "enchant2 fortune 5"
+
+# Configuration for tool rewards given at level ups.
+# Handlers:
+# - "command" : Runs the command provided as the console. (Ex: "command say test")
+# - "player-command" : Runs the command provided as the player. ("Ex: player-command say test")
+# - "player-opcommand" : Runs the command provided as the player with OP permissions. ("Ex: player-opcommand specialenchant enchantment")
+# - "enchant" : Adds an enchantment to the tool. Overrides existing enchantments with the new level provided. (Ex: "enchant efficiency 1")
+# - "enchant2" : Does the same thing as "enchant" but doesn't override existing enchantments. (Ex: "enchant2 efficiency 1")
+# - "enchant3" : Increases the existing level value of the enchant. (Ex: "enchant3 efficiency 1")
+# - "attribute" : Modifies an attribute on the tool. (Ex: "attribute generic.attack_speed 10") OR (Ex: "attribute GENERIC_ATTACK_SPEED 10")
+boots_rewards:
+  1:
+    - "enchant2 efficiency 1"
+  3:
+    - "enchant2 efficiency 2"
+  5:
+    - "enchant2 efficiency 3"
+  8:
+    - "enchant2 efficiency 4"
+  10:
+    - "enchant2 efficiency 5"
+  11:
+    - "enchant2 unbreaking 1"
+  13:
+    - "enchant2 unbreaking 2"
+  15:
+    - "enchant2 unbreaking 3"
+  20:
+    - "enchant2 mending 1"
+  24:
+    - "enchant2 fortune 1"
+  26:
+    - "enchant2 fortune 2"
+  30:
+    - "enchant2 fortune 3"
+  40:
+    - "enchant2 efficiency 6"
+  50:
+    - "enchant2 fortune 4"
+  65:
+    - "enchant2 efficiency 7"
+    - "enchant2 unbreaking 10"
+  80:
+    - "enchant2 efficiency 8"
+  90:
+    - "enchant2 efficiency 9"
+  100:
+    - "enchant2 efficiency 10"
+    - "enchant2 fortune 5"
+
+
 # Configuration for tool displays.
 # Placeholders:
 # - {level} : The tool's level.
