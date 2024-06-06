@@ -28,21 +28,18 @@ public class BlockEventListener extends XPListener {
     final ItemStack hand = LevelToolsUtil.getHand(player);
 
     if (!LevelToolsPlugin.getInstance().getConfig().getBoolean("playerPlacedBlocks")) {
-      final DataBlock db =
-          LevelToolsPlugin.getInstance().getBlockDataManager().getDataBlock(block, false);
+      final DataBlock db = LevelToolsPlugin.getInstance().getBlockDataManager().getDataBlock(block, false);
 
       if (db != null && db.contains("level_tools") && db.getBoolean("level_tools")) {
         return;
       }
     }
 
-    final String type =
-        LevelToolsPlugin.getInstance().getConfig().getString("block_list_type", "blacklist");
-    final Set<Material> blocks =
-        LevelToolsPlugin.getInstance().getConfig().getStringList("block_list").stream()
-            .map(Material::getMaterial)
-            .filter(Objects::nonNull)
-            .collect(Collectors.toSet());
+    final String type = LevelToolsPlugin.getInstance().getConfig().getString("block_list_type", "blacklist");
+    final Set<Material> blocks = LevelToolsPlugin.getInstance().getConfig().getStringList("block_list").stream()
+        .map(Material::getMaterial)
+        .filter(Objects::nonNull)
+        .collect(Collectors.toSet());
 
     if (type != null && type.equalsIgnoreCase("whitelist") && !blocks.contains(block.getType())) {
       return;

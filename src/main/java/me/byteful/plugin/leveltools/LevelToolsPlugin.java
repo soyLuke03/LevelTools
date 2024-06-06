@@ -9,8 +9,10 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import me.byteful.plugin.leveltools.api.AnvilCombineMode;
 import me.byteful.plugin.leveltools.listeners.AnvilListener;
+import me.byteful.plugin.leveltools.listeners.ArmorEventListener;
 import me.byteful.plugin.leveltools.listeners.BlockEventListener;
 import me.byteful.plugin.leveltools.listeners.EntityEventListener;
+import me.byteful.plugin.leveltools.listeners.ShieldEventListener;
 import me.byteful.plugin.leveltools.util.UpdateChecker;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
@@ -133,6 +135,8 @@ public final class LevelToolsPlugin extends JavaPlugin {
     final PluginManager pm = Bukkit.getPluginManager();
     pm.registerEvents(new BlockEventListener(), this);
     pm.registerEvents(new EntityEventListener(), this);
+    pm.registerEvents(new ArmorEventListener(), this);
+    pm.registerEvents(new ShieldEventListener(), this);
     pm.registerEvents(new AnvilListener(), this);
   }
 
