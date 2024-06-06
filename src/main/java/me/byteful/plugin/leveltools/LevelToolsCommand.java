@@ -96,7 +96,7 @@ public class LevelToolsCommand {
 
     final ItemStack item = LevelToolsUtil.getHand(player);
 
-    if (LevelToolsUtil.isSupportedTool(item.getType())) {
+    if (LevelToolsUtil.isSupportedTool(item.getType()) || LevelToolsUtil.isSupportedArmor(item.getType())) {
       final LevelToolsItem tool = LevelToolsUtil.createLevelToolsItem(item);
       tool.setXp(xp);
       LevelToolsUtil.setHand(player, tool.getItemStack());
@@ -119,7 +119,7 @@ public class LevelToolsCommand {
 
     final ItemStack item = LevelToolsUtil.getHand(player);
 
-    if (LevelToolsUtil.isSupportedTool(item.getType())) {
+    if (LevelToolsUtil.isSupportedTool(item.getType()) || LevelToolsUtil.isSupportedArmor(item.getType())) {
       final LevelToolsItem tool = LevelToolsUtil.createLevelToolsItem(item);
       final int initial = tool.getLevel();
       tool.setLevel(level);
@@ -146,7 +146,7 @@ public class LevelToolsCommand {
 
     final ItemStack item = LevelToolsUtil.getHand(player);
 
-    if (LevelToolsUtil.isSupportedTool(item.getType())) {
+    if (LevelToolsUtil.isSupportedTool(item.getType()) || LevelToolsUtil.isSupportedArmor(item.getType())) {
       final LevelToolsItem tool = LevelToolsUtil.createLevelToolsItem(item);
       tool.setLevel(tool.getLevel() + 1);
       LevelToolsUtil.setHand(player, tool.getItemStack());

@@ -23,7 +23,9 @@ repositories {
     maven {
         url = uri('https://jitpack.io')
     }
-    maven { url 'https://redempt.dev' }
+    maven { 
+        url = uri('https://redempt.dev') 
+    }
     maven {
         url = uri('https://repo.extendedclip.com/content/repositories/placeholderapi/')
     }
@@ -40,7 +42,7 @@ dependencies {
     implementation 'org.bstats:bstats-bukkit:3.0.2'
     implementation 'commons-lang:commons-lang:2.6' // Cambia a commons-lang 2.x para NumberUtils
 
-    compileOnly 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot-api:1.14.4-R0.1-SNAPSHOT'
     compileOnly 'org.jetbrains:annotations:24.1.0'
     compileOnly 'me.clip:placeholderapi:2.11.5'
 }
