@@ -203,34 +203,29 @@ public final class LevelToolsUtil {
   }
 
   public static ItemStack getOffHand(Player player) {
-    return RedLib.MID_VERSION >= 9
-        ? player.getInventory().getItemInOffHand().clone()
-        : player.getItemInHand().clone();
-  }
+    ItemStack offHand = player.getInventory().getItemInOffHand();
+    return offHand != null ? offHand.clone() : null;
+}
 
-  public static ItemStack getHelmet(Player player) {
-    return RedLib.MID_VERSION >= 9
-        ? player.getInventory().getHelmet().clone()
-        : player.getItemInHand().clone();
-  }
+public static ItemStack getHelmet(Player player) {
+    ItemStack helmet = player.getInventory().getHelmet();
+    return helmet != null ? helmet.clone() : null;
+}
 
   public static ItemStack getChestplate(Player player) {
-    return RedLib.MID_VERSION >= 9
-        ? player.getInventory().getChestplate().clone()
-        : player.getItemInHand().clone();
-  }
+    ItemStack chestplate = player.getInventory().getChestplate();
+    return chestplate != null ? chestplate.clone() : null;
+}
 
   public static ItemStack getLeggings(Player player) {
-    return RedLib.MID_VERSION >= 9
-        ? player.getInventory().getLeggings().clone()
-        : player.getItemInHand().clone();
-  }
+    ItemStack leggings = player.getInventory().getLeggings();
+    return leggings!= null? leggings.clone() : null;
+}
 
   public static ItemStack getBoots(Player player) {
-    return RedLib.MID_VERSION >= 9
-        ? player.getInventory().getBoots().clone()
-        : player.getItemInHand().clone();
-  }
+    ItemStack boots = player.getInventory().getBoots();
+    return boots != null ? boots.clone() : null;
+}
 
   public static void setHand(Player player, ItemStack stack) {
     if (RedLib.MID_VERSION >= 9) {
@@ -430,7 +425,7 @@ public final class LevelToolsUtil {
         return;
 
       tool.setLastHandledReward(keyNum);
-      setHand(player, tool.getItemStack());
+      setItemInHisMainSlot(tool, player);
       for (String rewardStr : rewardCs.getStringList(key)) {
         final String[] split = rewardStr.split(" ");
 
@@ -445,37 +440,41 @@ public final class LevelToolsUtil {
                   type.apply(tool, split, player);
                   if (type.isShouldUpdate()) {
 
-                    // Checks if the tool is a tool or weapon and its slot and returns it in his
-                    // position
-                    if (LevelToolsUtil.isSupportedTool(tool.getItemStack().getType())) {
-                      if (LevelToolsUtil.getHand(player).getType().equals(Material.SHIELD)
-                          && tool.getItemStack().getType().equals(Material.SHIELD)) {
-                        setHand(player, tool.getItemStack());
-                      } else if (LevelToolsUtil.getOffHand(player).getType().equals(Material.SHIELD)
-                          && tool.getItemStack().getType().equals(Material.SHIELD)) {
-                        setOffHand(player, tool.getItemStack());
-                      } else {
-                        setHand(player, tool.getItemStack());
-                      }
-                    }
-                    // Checks if the tool is in some Armor slot and returns it in his position
-                    else if (LevelToolsUtil.isSupportedArmor(tool.getItemStack().getType())) {
-                      if (LevelToolsUtil.isHelmet(tool.getItemStack().getType())) {
-                        setHelmet(player, tool.getItemStack());
-                      } else if (LevelToolsUtil.isChestplate(tool.getItemStack().getType())) {
-                        setChestplate(player, tool.getItemStack());
-                      } else if (LevelToolsUtil.isLeggings(tool.getItemStack().getType())) {
-                        setLeggings(player, tool.getItemStack());
-                      } else if (LevelToolsUtil.isBoots(tool.getItemStack().getType())) {
-                        setBoots(player, tool.getItemStack());
-
-                      }
-                    }
+                    setItemInHisMainSlot(tool, player);
                   }
                 });
       }
 
       return;
+    }
+  }
+
+  private static void setItemInHisMainSlot(LevelToolsItem tool, Player player) {
+    // Checks if the tool is a tool or weapon and its slot and returns it in his
+    // position
+    if (LevelToolsUtil.isSupportedTool(tool.getItemStack().getType())) {
+      if (LevelToolsUtil.getHand(player).getType().equals(Material.SHIELD)
+          && tool.getItemStack().getType().equals(Material.SHIELD)) {
+        setHand(player, tool.getItemStack());
+      } else if (LevelToolsUtil.getOffHand(player).getType().equals(Material.SHIELD)
+          && tool.getItemStack().getType().equals(Material.SHIELD)) {
+        setOffHand(player, tool.getItemStack());
+      } else {
+        setHand(player, tool.getItemStack());
+      }
+    }
+    // Checks if the tool is in some Armor slot and returns it in his position
+    else if (LevelToolsUtil.isSupportedArmor(tool.getItemStack().getType())) {
+      if (LevelToolsUtil.isHelmet(tool.getItemStack().getType())) {
+        setHelmet(player, tool.getItemStack());
+      } else if (LevelToolsUtil.isChestplate(tool.getItemStack().getType())) {
+        setChestplate(player, tool.getItemStack());
+      } else if (LevelToolsUtil.isLeggings(tool.getItemStack().getType())) {
+        setLeggings(player, tool.getItemStack());
+      } else if (LevelToolsUtil.isBoots(tool.getItemStack().getType())) {
+        setBoots(player, tool.getItemStack());
+
+      }
     }
   }
 
