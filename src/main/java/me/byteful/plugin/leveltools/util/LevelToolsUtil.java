@@ -240,6 +240,28 @@ public final class LevelToolsUtil {
     }
   }
 
+  public static void setOffHand(Player player, ItemStack stack) {
+    if (RedLib.MID_VERSION >= 9) {
+      player.getInventory().setItemInOffHand(stack);
+    }
+  }
+
+  public static void setHelmet(Player player, ItemStack stack) {
+    player.getInventory().setHelmet(stack);
+  }
+
+  public static void setChestplate(Player player, ItemStack stack) {
+    player.getInventory().setChestplate(stack);
+  }
+
+  public static void setLeggings(Player player, ItemStack stack) {
+    player.getInventory().setLeggings(stack);
+  }
+
+  public static void setBoots(Player player, ItemStack stack) {
+    player.getInventory().setBoots(stack);
+  }
+
   public static boolean getDamageFromValidCause(DamageCause damageCause) {
     if (damageCause.equals(DamageCause.BLOCK_EXPLOSION)
         || damageCause.equals(DamageCause.ENTITY_ATTACK)
@@ -422,7 +444,33 @@ public final class LevelToolsUtil {
                 type -> {
                   type.apply(tool, split, player);
                   if (type.isShouldUpdate()) {
-                    setHand(player, tool.getItemStack());
+
+                    // Checks if the tool is a tool or weapon and its slot and returns it in his
+                    // position
+                    if (LevelToolsUtil.isSupportedTool(tool.getItemStack().getType())) {
+                      if (LevelToolsUtil.getHand(player).getType().equals(Material.SHIELD)
+                          && tool.getItemStack().getType().equals(Material.SHIELD)) {
+                        setHand(player, tool.getItemStack());
+                      } else if (LevelToolsUtil.getOffHand(player).getType().equals(Material.SHIELD)
+                          && tool.getItemStack().getType().equals(Material.SHIELD)) {
+                        setOffHand(player, tool.getItemStack());
+                      } else {
+                        setHand(player, tool.getItemStack());
+                      }
+                    }
+                    // Checks if the tool is in some Armor slot and returns it in his position
+                    else if (LevelToolsUtil.isSupportedArmor(tool.getItemStack().getType())) {
+                      if (LevelToolsUtil.isHelmet(tool.getItemStack().getType())) {
+                        setHelmet(player, tool.getItemStack());
+                      } else if (LevelToolsUtil.isChestplate(tool.getItemStack().getType())) {
+                        setChestplate(player, tool.getItemStack());
+                      } else if (LevelToolsUtil.isLeggings(tool.getItemStack().getType())) {
+                        setLeggings(player, tool.getItemStack());
+                      } else if (LevelToolsUtil.isBoots(tool.getItemStack().getType())) {
+                        setBoots(player, tool.getItemStack());
+
+                      }
+                    }
                   }
                 });
       }
