@@ -50,12 +50,6 @@ public class BlockEventListener extends XPListener {
     final ItemStack hand = LevelToolsUtil.getHand(player);
 
     if (!LevelToolsPlugin.getInstance().getConfig().getBoolean("playerPlacedBlocks")) {
-<<<<<<< HEAD
-      final DataBlock db = LevelToolsPlugin.getInstance().getBlockDataManager().getDataBlock(block, false);
-
-      if (db != null && db.contains("level_tools") && db.getBoolean("level_tools")) {
-        return;
-=======
       final PersistentDataContainer pdc = block.getChunk().getPersistentDataContainer();
       if (pdc.has(trackedBlocks)) {
         final List<Vector> blocks = pdc.get(trackedBlocks, DataType.asList(DataType.VECTOR));
@@ -63,7 +57,6 @@ public class BlockEventListener extends XPListener {
           pdc.set(trackedBlocks, DataType.asList(DataType.VECTOR), blocks);
           return;
         }
->>>>>>> master
       }
     }
 
