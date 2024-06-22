@@ -2,9 +2,14 @@ package me.byteful.plugin.leveltools;
 
 import static me.byteful.plugin.leveltools.util.Text.colorize;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import me.byteful.plugin.leveltools.api.AnvilCombineMode;
+import me.byteful.plugin.leveltools.api.block.BlockDataManager;
+import me.byteful.plugin.leveltools.api.block.impl.FileBlockDataManager;
 import me.byteful.plugin.leveltools.api.scheduler.Scheduler;
 import me.byteful.plugin.leveltools.listeners.AnvilListener;
 import me.byteful.plugin.leveltools.listeners.ArmorEventListener;
@@ -30,6 +35,8 @@ public final class LevelToolsPlugin extends JavaPlugin {
   private UpdateChecker updateChecker;
   private CompiledExpression levelXpFormula;
   private Metrics metrics;
+  private BlockDataManager blockDataManager;
+  private Scheduler scheduler;
 
   public static LevelToolsPlugin getInstance() {
     return instance;
@@ -40,7 +47,7 @@ public final class LevelToolsPlugin extends JavaPlugin {
     sendStartupBanner();
     instance = this;
 
-    final Scheduler scheduler = LevelToolsUtil.createScheduler(this);
+    scheduler = LevelToolsUtil.createScheduler(this);
     updateChecker = new UpdateChecker(this, scheduler);
 
     saveDefaultConfig();
@@ -48,6 +55,20 @@ public final class LevelToolsPlugin extends JavaPlugin {
     setAnvilCombineMode();
     setLevelXpFormula();
     getLogger().info("Loaded configuration...");
+
+    final Path blocksFile = getDataFolder().toPath().resolve("placed_blocks.txt");
+
+    if (!Files.exists(blocksFile)) {
+      try {
+        blocksFile.toFile().createNewFile();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+
+    blockDataManager = new FileBlockDataManager(blocksFile, scheduler);
+    blockDataManager.load();
+    getLogger().info("Loaded block data manager...");
 
     if (getConfig().getBoolean("update.start")) {
       updateChecker.check();
@@ -85,6 +106,14 @@ public final class LevelToolsPlugin extends JavaPlugin {
       metrics.shutdown();
     }
 
+    if (blockDataManager != null) {
+      try {
+        blockDataManager.close();
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+
     instance = null;
 
     getLogger().info("Successfully stopped " + getDescription().getFullName() + ".");
@@ -108,7 +137,7 @@ public final class LevelToolsPlugin extends JavaPlugin {
 
   private void registerListeners() {
     final PluginManager pm = Bukkit.getPluginManager();
-    pm.registerEvents(new BlockEventListener(), this);
+    pm.registerEvents(new BlockEventListener(blockDataManager, scheduler), this);
     pm.registerEvents(new EntityEventListener(), this);
     pm.registerEvents(new ArmorEventListener(), this);
     pm.registerEvents(new ShieldEventListener(), this);
@@ -136,5 +165,17 @@ public final class LevelToolsPlugin extends JavaPlugin {
 
   public BukkitCommandHandler getCommandManager() {
     return commandManager;
+  }
+
+  public UpdateChecker getUpdateChecker() {
+    return updateChecker;
+  }
+
+  public Scheduler getScheduler() {
+    return scheduler;
+  }
+
+  public BlockDataManager getBlockDataManager() {
+    return blockDataManager;
   }
 }
